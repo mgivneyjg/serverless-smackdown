@@ -1,30 +1,50 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Authenticator variation="modal" v-slot="{ signOut }">
+
+    <nav class="navbar is-dark">
+      <div class="navbar-item is-size-3">
+        <router-link class="has-text-light" to="/">Quick Quiz</router-link>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <router-link class="has-text-light" to="/game">Play!</router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link class="has-text-light" to="/leaderboard">LeaderBoards</router-link>
+        </div>
+        <div class="navbar-item">
+          <button class="button is-dark" @click="logout">Logout</button>
+        </div>
+      </div>
+    </nav>
+    <!--
+      <button @click="signOut">Sign Out</button>
+    -->
+    <router-view />
+  </Authenticator>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+<script>
+import {provide} from 'vue'
+import store from '@/store'
+import {Authenticator} from '@aws-amplify/ui-vue'
+
+export default { 
+  name: 'App',
+  components: {
+    Authenticator
+  },
+  setup(){
+      provide('store', store)
+
+      const logout = () =>{
+        console.log('log me out fool')
+      }
+
+
+      return { logout }
+  }
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

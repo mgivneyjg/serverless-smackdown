@@ -10,6 +10,11 @@
       "StackName": "amplify-quickquiz-dev-152609",
       "StackId": "arn:aws:cloudformation:us-east-1:422025071707:stack/amplify-quickquiz-dev-152609/518be440-014f-11ed-87dc-12605eadd46f",
       "AmplifyAppId": "d2r46x5ne9ljm4"
+    },
+    "categories": {
+      "auth": {
+        "quickquiz013f9018": {}
+      }
     }
   }
 }

@@ -1,18 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <PlayHeader />
+  <GameHistory :games="store.state.playedGames" />
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { inject } from 'vue'
+import GameHistory from '../components/GameHistory.vue'
+import PlayHeader from '../components/PlayHeader.vue'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  components: { GameHistory, PlayHeader },
+  setup() {
+    const store = inject('store')
+    return { store }
   }
 }
 </script>
